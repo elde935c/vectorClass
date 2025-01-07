@@ -1,5 +1,8 @@
 #pragma once
 
+#include <limits>
+#include <cmath>
+
 namespace MyMath {
 
 template <typename T>
@@ -93,6 +96,49 @@ class Vector {
             return result;
         }
 
+        double norm(int p=2) const {
+            double sum = 0;
+            for (int i = 0; i < data.size(); i++) {
+                sum += std::pow(std::abs(data[i]), p);
+            }
+            return std::pow(sum, 1.0/p);
+        }
+
+        T max() const {
+            T result = std::numeric_limits<T>::min();
+            for (int i = 0; i < data.size(); i++) {
+                if (data[i] > result) {
+                    result = data[i];
+                }
+            }
+            return result;
+        }
+
+        T min() const {
+            T result = std::numeric_limits<T>::max();
+            for (int i = 0; i < data.size(); i++) {
+                if (data[i] < result) {
+                    result = data[i];
+                }
+            }
+            return result;
+        }
+
 };
+
+template <typename T>
+T dot(const Vector<T>& v0, const Vector<T>& v1) {
+    if (v0.size() != v1.size()) {
+        throw std::invalid_argument("Vectors are of size "
+        + std::to_string(v0.size()) + " and " + std::to_string(v1.size()) 
+        + ", must have the same size");
+    }
+    T result = 0;
+    for (int i = 0; i < v0.size(); i++) {
+        result += v0[i] * v1[i];
+    }
+    return result;
+}
+
 }; // namespace MyMath
 
