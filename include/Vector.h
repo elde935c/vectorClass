@@ -96,22 +96,32 @@ class Vector {
             return result;
         }
 
-        T norm(int p=2) const {
-            if (std::isinf(p)) {
-                T result = 0;
-                for (int i = 0; i < data.size(); i++) {
-                    if (std::abs(data[i]) > result) {
-                        result = std::abs(data[i]);
-                    }
-                }
-                std::cout<<result<<std::endl;
-                return result;
-            }
-            T sum = 0;
+        double norm(int p=2) const {
+            double sum = 0;
             for (int i = 0; i < data.size(); i++) {
                 sum += std::pow(std::abs(data[i]), p);
             }
             return std::pow(sum, 1.0/p);
+        }
+
+        T max() const {
+            T result = std::numeric_limits<T>::min();
+            for (int i = 0; i < data.size(); i++) {
+                if (data[i] > result) {
+                    result = data[i];
+                }
+            }
+            return result;
+        }
+
+        T min() const {
+            T result = std::numeric_limits<T>::max();
+            for (int i = 0; i < data.size(); i++) {
+                if (data[i] < result) {
+                    result = data[i];
+                }
+            }
+            return result;
         }
 
 };

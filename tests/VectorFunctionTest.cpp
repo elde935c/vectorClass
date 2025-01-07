@@ -15,12 +15,13 @@ TEST(VectorFunctionTest, Norm1) {
     EXPECT_NEAR(n, nSolution, 1e-10);
 }
 
-TEST(VectorFunctionTest, InfNorm) {
-    MyMath::Vector<double> v0(std::vector<double>{1, 2, -3});
-    auto n = v0.norm(std::numeric_limits<int>::infinity());
-    double nSolution = 3;
+TEST(VectorFunctionTest, Norm2WithInteger) {
+    MyMath::Vector<int> v0(std::vector<int>{1, -2, 3});
+    auto n = v0.norm(2);
+    double nSolution = 3.7416573867739413;
     EXPECT_NEAR(n, nSolution, 1e-10);
 }
+
 
 TEST(VectorFunctionTest, Dot) {
     MyMath::Vector<double> v0(std::vector<double>{1, 2, 3});
@@ -28,4 +29,18 @@ TEST(VectorFunctionTest, Dot) {
     auto d = MyMath::dot(v0, v1);
     double dSolution = 32;
     EXPECT_NEAR(d, dSolution, 1e-10);
+}
+
+TEST(VectorFunctionTest, maxOfVector) {
+    MyMath::Vector<double> v0(std::vector<double>{1, 2, 3});
+    auto m = v0.max();
+    double mSolution = 3;
+    EXPECT_NEAR(m, mSolution, 1e-10);
+}
+
+TEST(VectorFunctionTest, minOfVector) {
+    MyMath::Vector<double> v0(std::vector<double>{1, 2, 3});
+    auto m = v0.min();
+    double mSolution = 1;
+    EXPECT_NEAR(m, mSolution, 1e-10);
 }
