@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../include/Vector.h"
+#include "Vector.h"
 
 TEST(VectorFunctionTest, Norm) {
     MyMath::Vector<double> v0(std::vector<double>{1, 2, 3});

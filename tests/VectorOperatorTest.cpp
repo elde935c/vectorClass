@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../include/Vector.h"
+#include "Vector.h"
 
 TEST(VectorOperatorTest, AddVector) {
     MyMath::Vector<int> v0(std::vector<int>{1, 2, 3});
