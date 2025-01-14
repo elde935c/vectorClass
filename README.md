@@ -31,12 +31,15 @@ The `MyMath` library provides a simple implementation of a vector class in C++. 
 
 2. **Configure the project**:
     ```sh
+    mkdir build
     cmake -G "MinGW Makefiles" -S . -B build
     ```
 
-3. **Build the project**:
+3. **Build and install the project**:
     ```sh
-    cmake --build build
+    cd build
+    cmake --build .
+    cmake --build install .
     ```
 
 4. **Run the tests**:
