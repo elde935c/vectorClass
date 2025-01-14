@@ -116,7 +116,45 @@ class Vector {
             return result;
         }
 
-        double norm(int p=2) const {
+        Vector<T> operator+=(const Vector<T>& other) {
+            if (size != other.getSize()) {
+                throw std::invalid_argument("Vectors are of size "
+                + std::to_string(data.size()) + " and " + std::to_string(other.getSize()) 
+                + ", must have the same size");
+            }
+            for (int i = 0; i < size; i++) {
+                data[i] += other[i];
+            }
+            return *this;
+        }
+
+        Vector<T> operator-=(const Vector<T>& other) {
+            if (size != other.getSize()) {
+                throw std::invalid_argument("Vectors are of size "
+                + std::to_string(data.size()) + " and " + std::to_string(other.getSize()) 
+                + ", must have the same size");
+            }
+            for (int i = 0; i < size; i++) {
+                data[i] -= other[i];
+            }
+            return *this;
+        }
+
+        Vector<T> operator*=(const T scalar) {
+            for (int i = 0; i < size; i++) {
+                data[i] *= scalar;
+            }
+            return *this;
+        }
+
+        Vector<T> operator/=(const T scalar) {
+            for (int i = 0; i < size; i++) {
+                data[i] /= scalar;
+            }
+            return *this;
+        }
+
+        double norm(int p=2) const { //todo output should be double or float depending on T
             double sum = 0;
             for (int i = 0; i < data.size(); i++) {
                 sum += std::pow(std::abs(data[i]), p);

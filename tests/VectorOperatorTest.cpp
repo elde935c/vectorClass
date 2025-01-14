@@ -86,3 +86,33 @@ TEST(VectorOperatorTest, OrderOfOperatorsBrackets) {
     MyMath::Vector<double> vSolution(std::vector<double>{10, 14, 18});
     EXPECT_EQ(v, vSolution);
 }
+
+TEST(VectorOperatorTest, CompoundAdd) {
+    MyMath::Vector<int> v0(std::vector<int>{1, 2, 3});
+    MyMath::Vector<int> v1(std::vector<int>{4, 5, 6});
+    v0 += v1;
+    MyMath::Vector<int> vSolution(std::vector<int>{5, 7, 9});
+    EXPECT_EQ(v0, vSolution);
+}
+
+TEST(VectorOperatorTest, CompoundSubtract) {
+    MyMath::Vector<int> v0(std::vector<int>{5, 7, 9});
+    MyMath::Vector<int> v1(std::vector<int>{1, 2, 3});
+    v0 -= v1;
+    MyMath::Vector<int> vSolution(std::vector<int>{4, 5, 6});
+    EXPECT_EQ(v0, vSolution);
+}
+
+TEST(VectorOperatorTest, CompoundMultiply) {
+    MyMath::Vector<int> v0(std::vector<int>{1, 2, 3});
+    v0 *= 2;
+    MyMath::Vector<int> vSolution(std::vector<int>{2, 4, 6});
+    EXPECT_EQ(v0, vSolution);
+}
+
+TEST(VectorOperatorTest, CompoundDivide) {
+    MyMath::Vector<int> v0(std::vector<int>{2, 4, 6});
+    v0 /= 2;
+    MyMath::Vector<int> vSolution(std::vector<int>{1, 2, 3});
+    EXPECT_EQ(v0, vSolution);
+}
