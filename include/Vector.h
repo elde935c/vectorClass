@@ -89,6 +89,14 @@ class Vector {
             return result;
         }
 
+        Vector<T> operator-() const {
+            Vector<T> result(size);
+            for (int i = 0; i < size; i++) {
+                result[i] = -data[i];
+            }
+            return result;
+        }
+
         friend Vector<T> operator*(const T scalar, const Vector<T>& v){
             Vector<T> result(v.getSize());
             for (int i = 0; i < v.getSize(); i++) {   

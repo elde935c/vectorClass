@@ -34,6 +34,13 @@ TEST(VectorOperatorTest, SubtractVector) {
     EXPECT_EQ(v, vSolution);
 }
 
+TEST(VectorOperatorTest, UnityMinusOperator) {
+    MyMath::Vector<int> v0(std::vector<int>{1, 2, 3});
+    auto v = -v0;
+    MyMath::Vector<int> vSolution(std::vector<int>{-1,-2,-3});
+    EXPECT_EQ(v, vSolution);
+}
+
 TEST(VectorOperatorTest, SubtractMultipleVectors) {
     MyMath::Vector<int> v0(std::vector<int>{1, 2, 3});
     MyMath::Vector<int> v1(std::vector<int>{4, 5, 6});
